@@ -3,6 +3,9 @@
     <head>
     </head>
     <body>
-        <p> hi </p>
+        {% for game in game_data %}
+            <p> {{game[0]}} </p>
+            <p> {{game[1]}} </p>
+        {% endfor %}
     </body>
 </html>

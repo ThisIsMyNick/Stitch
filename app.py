@@ -1,12 +1,22 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 import sqlite3
 import os
+import utils.steam_api as steam_api
+from pprint import pprint
 
 app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-    return render_template('homepage.html')
+    #pprint(steam_api.get_featured())
+    feat = steam_api.get_featured()
+    games = []
+    for game in feat['featured_win']:
+        name = game['name']
+        price = str(game['final_price'])
+        price = price[:-2] + "." + price[-2:]
+        games.append((name, price))
+    return render_template('homepage.html', game_data=games)
 
 if __name__ == '__main__':
     if os.path.getsize("data/database.db") == 0:
