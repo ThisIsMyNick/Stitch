@@ -18,6 +18,11 @@ def addWishlist(username,game):
     data = c.execute("INSERT INTO wishlist VALUES(?,?)",(username,game,))
     db.commit()
     db.close()
+    
+def removeWishlist(username,game):
+    
+
+    
 
 '''
 os.chdir("..")
