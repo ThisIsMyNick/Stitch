@@ -2,9 +2,15 @@
 				    Devlog
 -------------------------------------------------------------------------------
 12/6/16
-Completed wishlist.py (the backend for profile.html)
+Started wishlist.py (the backend for profile.html)
 Started homepage.html and css
 Familiarized with Twitch/Steam APIs 
+Retrieved API keys from Steam and Twitch
 
 12/7/16
-Retrieved API keys from Steam and Twitch
+Completed wishlist.py
+Created function that returns a list of tuples containing Steam game info
+Continued working on homepage.html
+Started profile.html
+Determined website design/layout
+
