@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+				    Devlog
+-------------------------------------------------------------------------------
+12/6/16
+Completed wishlist.py (the backend for profile.html)
+Started homepage.html and css
+Familiarized with Twitch/Steam APIs 
+
+12/7/16
+Retrieved API keys from Steam and Twitch
