@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html>
     <head>
+      <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="../static/stylesheet.css">
     </head>
+    
     <body>
+      
+      <div class="jumbotron text-center">
+	<p id="homepageJumbo"> Stitch </p> 
+      </div>
+
+      <div class="games">
+      <div class="container-fluid" id="homepageContainer">
+	<div class="row">
+	  <div class="col-md-6">
+	    <p> Game Name <p> 
+	  </div>
+	  <div class="col-md-2">
+	    <p> Price </p>
+	  </div>
+	</div>
+      </div>
+      </div>
+
+      <!-- Save for later
         {% for game in game_data %}
             <p> {{game[0]}} </p>
             <p> {{game[1]}} </p>
         {% endfor %}
+	    -->
     </body>
 </html>
