@@ -1,6 +1,6 @@
-Devlog:
+#Stitch
+======
+###A sleek gamehub that notifies you when games go on sale.
 
-12/6/16
-Completed wishlist.py (the backend for profile.html)
-Started homepage.html and css
+..*Uses the Steam and Twitch APIs.
 
