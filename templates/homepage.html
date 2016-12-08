@@ -7,20 +7,53 @@
     
     <body>
       
+	<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Stitch</a>
+        </div>
+		
+        <ul class="nav navbar-nav">
+			<li class="active"><a href="#">Homepage</a></li>
+			<li><a href="#">Profile</a></li>
+			
+			<!--  Login for navbar -->
+			<li>
+				<form action="" method="post" role="form">
+					<input type="text" name="username" placeholder="username">
+			</li>
+			<li>
+					<input type="password" name="password" placeholder="password">
+			</li>
+			<li>
+					<input type="submit" name="submit" value="login">
+				</form>
+			</li>
+			<!--  Login for navbar -->
+			
+		<form class="nav navbar-nav navbar-right">
+          <li><a href = "">Logout</a></li>
+        </form>
+			
+        </ul>
+		
+      </div>
+    </nav>
+	  
       <div class="jumbotron text-center">
-	<p id="homepageJumbo"> Stitch </p> 
+		<p id="homepageJumbo"> Stitch </p> 
       </div>
 
       <div class="games">
       <div class="container-fluid" id="homepageContainer">
-	<div class="row">
-	  <div class="col-md-6">
-	    <p> Game Name <p> 
-	  </div>
-	  <div class="col-md-2">
-	    <p> Price </p>
-	  </div>
-	</div>
+		<div class="row">
+			<div class="col-md-6">
+				<p> Game Name <p> 
+			</div>
+			<div class="col-md-2">
+				<p> Price </p>
+			</div>
+			</div>
       </div>
       </div>
 
