@@ -1,4 +1,13 @@
-.games{ 
-    padding-right: 200px;
-    padding-left: 200px; 
+.games { 
+    padding-right: 25%;
+    padding-left: 25%; 
 }
+
+#gameRow {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-style: solid;
+    margin-bottom: 30px;
+    martgin-top: 30px;
+}
+
