@@ -14,3 +14,7 @@ Continued working on homepage.html
 Started profile.html
 Determined website design/layout
 
+2016-12-09
+Nobel:
+    Added app_id database generator.
+    Added way to pretty print featured game json.
