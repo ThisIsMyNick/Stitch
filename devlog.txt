@@ -1,6 +1,8 @@
 -------------------------------------------------------------------------------
 				    Devlog
 -------------------------------------------------------------------------------
+Format: firstL -- TIMESTAMP
+
 12/6/16
 Started wishlist.py (the backend for profile.html)
 Started homepage.html and css
