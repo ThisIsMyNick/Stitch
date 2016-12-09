@@ -20,7 +20,11 @@ def addWishlist(username,game):
     db.close()
     
 def removeWishlist(username,game):
-    
+    db = sqlite3.connect("data/database.db")
+    c = db.cursor()
+    data = c.execute("DELETE FROM wishlist WHERE username=username AND games=game",(username,game,))
+    db.commit()
+    db.close()
 
     
 
