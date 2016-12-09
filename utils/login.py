@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 from hashlib import sha1
-import sqlite3
+from sqlite3 import connect
 
 f = "data/database.db"
 
@@ -68,3 +68,10 @@ def duplicate(user):#checks if username already exists
     db.commit()
     db.close()
     return retVal
+
+   
+#import os
+#os.chdir('..')
+#print(register("hello","world"))
+#print(register("helloz","world"))
+#print(login("helloz","world"))

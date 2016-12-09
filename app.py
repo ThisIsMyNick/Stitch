@@ -17,7 +17,7 @@ def homepage():
         price = str(game['final_price'])
         price = price[:-2] + "." + price[-2:]
         games.append((name, price))
-    return render_template('homepage.html', game_data=games, regRet = regRet)
+    return render_template('homepage.html', game_data=games)#, regRet = regRet)
 
 if __name__ == '__main__':
     if os.path.getsize("data/database.db") == 0:
@@ -41,7 +41,7 @@ def authenticate():
     
     if tp == "register":
         regRet = auth.register(un,pw)#returns an error/success message
-        return redirect('register.html', result = regRet)
+        return redirect('login.html', result = regRet)
         
     if tp == "login":
         text = auth.login(un,pw)#error message
@@ -49,12 +49,19 @@ def authenticate():
             session["Username"] = un
             return redirect(url_for('homePage'))
         return render_template('login.html', result = text)
-    
-    
+        
 
-@app.route('/<username>')
-def profile():
+@app.route('/profile')
+def myProfile():
+    username = session["Username"]
+    wl = wishlist.getWishlist(username)
+    return render_template('profile.html',username=username,wishlist=wl)
 
+@app.route('/profile/<username>')
+def profile(username):
+    wl = wishlist.getWishlist(username)
+    return render_template('profile.html',username=username,wishlist=wl)
 
 @app.route('/<gamepage>')
-def gamepage():
+def gamepage(gamepage):
+    

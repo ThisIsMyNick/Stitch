@@ -8,6 +8,23 @@
     padding-bottom: 50px;
     border-style: solid;
     margin-bottom: 30px;
-    martgin-top: 30px;
+    margin-top: 30px;
+}
+
+#gameRow img{
+    position:absolute;
+    clip: rect(50px,50px,25%,25%)
+}
+
+#gameRow .gameText{
+    visibility: hidden;
+}
+
+#gameRow:hover {
+    opacity: 50%;
+}
+
+#gameRow:hover .gameText{
+    visibility: visible;
 }
 
