@@ -44,16 +44,12 @@ def gamelist():
     return sorted_gl
 
 if __name__ == '__main__':
-    try:
-        os.remove("app_ids.db")
-    except OSError:
-        pass
     db = sqlite3.connect("app_ids.db")
     c = db.cursor()
-    c.execute("CREATE TABLE apps (name TEXT, id INTEGER)")
+    c.execute("CREATE TABLE IF NOT EXISTS apps (name TEXT, id INTEGER, UNIQUE(name,id))")
     gl = gamelist()
     for g in gl:
-        c.execute("INSERT INTO apps VALUES(?,?)", (g[0], g[1]))
+        c.execute("INSERT OR IGNORE INTO apps VALUES(?,?)", (g[0], g[1]))
     db.commit()
     db.close()
     print "Done. Move app_ids.db to data/ to use it."
