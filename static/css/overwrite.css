@@ -2,3 +2,18 @@
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+.game {
+	width: 520px;
+	padding-right: 25%;
+	padding-left: 25%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	border-style: solid;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+.game:hover {
+	background: white;
+  opacity: 50%;
+}
