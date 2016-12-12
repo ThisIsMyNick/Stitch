@@ -4,12 +4,14 @@
 }
 
 #gameRow {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 80px;
+    padding-bottom: 80px;
     border-style: solid;
     margin-bottom: 30px;
     margin-top: 30px;
-	background-image: url("../static/test.jpg");
+    background-image: url("../static/test.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 #gameRowImg{
@@ -21,8 +23,10 @@
 }
 
 #gameRow:hover {
-	background: white;
-    opacity: 50%;
+    background-image: url("../static/test.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    opacity:.70;
 }
 
 #gameRow:hover .gameText{

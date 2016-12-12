@@ -35,8 +35,12 @@ danielC -- 2016-12-11 @23:41
     Added background image to game blocks
     Fixed hover function of blocks
 
-nobelG -- 2016-12-12
+nobelG -- 2016-12-12 @12:32
     Add search feature.
 
-harryL -- 2016-12-12
+harryL -- 2016-12-12 @12:32
     Completed search route in app.py
+
+danielC -- 2016-12-12 @12:32
+	Worked on opacity of blocks
+	Opacity of text in blocks still needs work
