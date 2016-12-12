@@ -44,3 +44,7 @@ harryL -- 2016-12-12 @12:32
 danielC -- 2016-12-12 @12:32
 	Worked on opacity of blocks
 	Opacity of text in blocks still needs work
+
+yikaiW -- 2016-12-12 @12:32
+	Removed wells in profile for blocks
+	Working on columns of games
