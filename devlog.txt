@@ -37,3 +37,6 @@ danielC -- 2016-12-11 @23:41
 
 nobelG -- 2016-12-12
     Add search feature.
+
+harryL -- 2016-12-12
+    Completed search route in app.py
