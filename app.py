@@ -19,10 +19,12 @@ def homepage():
         games.append((name, price))
     return render_template('homepage.html', game_data=games)#, regRet = regRet)
 
-@app.route('/search')
+@app.route('/search/', methods=['GET'])
 def search():
-    print get_id('Counter Strike')
-    return render_template('homepage.html')
+    query = request.args.get('query')
+    query = query.replace('%', ' ') 
+    gameList = get_id(query)
+    return render_template('homepage.html',game_data=gameList)
 
 if __name__ == '__main__':
     if os.path.getsize("data/database.db") == 0:
