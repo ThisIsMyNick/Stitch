@@ -9,11 +9,11 @@
     border-style: solid;
     margin-bottom: 30px;
     margin-top: 30px;
+	background-image: url("../static/test.jpg");
 }
 
-#gameRow img{
+#gameRowImg{
     position:absolute;
-    clip: rect(50px,50px,25%,25%)
 }
 
 #gameRow .gameText{
@@ -21,10 +21,12 @@
 }
 
 #gameRow:hover {
+	background: white;
     opacity: 50%;
 }
 
 #gameRow:hover .gameText{
     visibility: visible;
 }
+
 
