@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, session, url_for, redirect
 import sqlite3
 import os
 import utils.steam_api as steam_api
+from utils.search import get_id
 from pprint import pprint
-from utils import wishlist,login
 
 app = Flask(__name__)
 
@@ -18,6 +18,11 @@ def homepage():
         price = price[:-2] + "." + price[-2:]
         games.append((name, price))
     return render_template('homepage.html', game_data=games)#, regRet = regRet)
+
+@app.route('/search')
+def search():
+    print get_id('Counter Strike')
+    return render_template('homepage.html')
 
 if __name__ == '__main__':
     if os.path.getsize("data/database.db") == 0:
@@ -64,4 +69,4 @@ def profile(username):
 
 @app.route('/<gamepage>')
 def gamepage(gamepage):
-    
+    pass

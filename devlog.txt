@@ -31,3 +31,5 @@ yikaiW -- 2016-12-09 12:38
     Made the logout a different class
     Modified navbar such that it doesn't block the jumbotron
     
+nobelG -- 2016-12-12
+    Add search feature.
