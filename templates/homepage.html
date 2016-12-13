@@ -43,16 +43,27 @@
 	<h1 id="homepageJumbo"> Stitch </h1>
 	<h3>Your gaming hub</h3>
       </div>
-
+	  
       <div class="games">
       <div class="container-fluid" id="homepageContainer">
 		<div class="row" id="gameRow">
-			<div class="col-md-6">
-				<p class="gameText"> Game Name <p>
+		  {% for game in game_data %}
+			<div class="col-md-6" id="gameRowImg"> 
+				<img src="{{game[4]}}" class="float-xs-left"> </a>
 			</div>
-			<div class="col-md-2">
-				<p class="gameText"> Price </p>
+			<div class="col-md-3">
+				<p class="gameText"> {{game[0]}} <p>
 			</div>
+			<div class="col-md-3">
+				<p class="gameText"> {% if game[2] %}
+                Discount: {{game[3]}}% <br>
+                Final Price: ${{game[1]}} </p>
+            {% else %}
+            Price: ${{game[1]}} <br>
+            {% endif %}</p>
+			</div>
+		  {% endfor %}
+		</div>
 		</div>
 
 		<br>

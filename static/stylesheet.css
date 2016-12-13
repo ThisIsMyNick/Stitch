@@ -4,33 +4,30 @@
 }
 
 #gameRow {
-    padding-top: 80px;
-    padding-bottom: 80px;
     border-style: solid;
     margin-bottom: 30px;
     margin-top: 30px;
-    background-image: url("../static/test.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+	background-color: rgba(210,210,210,0.7);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	max-height:106px;
+	
 }
 
 #gameRowImg{
-    position:absolute;
+	position: cover;
+	left:-15px;
+	display:block;
+	height:100%;
+	width:100;
+	max-height: 100px;
+	max-width:500px;
+	overflow:hidden
 }
 
 #gameRow .gameText{
-    visibility: hidden;
-}
-
-#gameRow:hover {
-    background-image: url("../static/test.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    opacity:.70;
-}
-
-#gameRow:hover .gameText{
-    visibility: visible;
+	padding-top: 15%;
+	display: block; 
+	font-size: 2em;
 }
 
 

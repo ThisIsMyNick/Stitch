@@ -52,3 +52,9 @@ yikaiW -- 2016-12-12 @12:32
 nobelG -- 2016-12-12 @20:25
     Home page/search page functional with name/price/discount/img data.
     Not pretty yet.
+
+danielC -- 2016-12-13 @00:37
+	Finished layout of homepage (still needs font styling, etc)
+	Scrapped hover idea, static image with border now instead
+	Search bar at top still needed
+	Testing on Jinja formatting needed.
