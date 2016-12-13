@@ -53,17 +53,13 @@ nobelG -- 2016-12-12 @20:25
     Home page/search page functional with name/price/discount/img data.
     Not pretty yet.
 
-<<<<<<< HEAD
-danielC -- 2016-12-13 @00:37
-	Finished layout of homepage (still needs font styling, etc)
-	Scrapped hover idea, static image with border now instead
-	Search bar at top still needed
-	Testing on Jinja formatting needed.
-=======
 yikaiW -- 2016-12-12 @22:24
 	Made games twice per row
 	Overwrote container-fluid in override.css
 	Made homepage changes (logout button and logo)
 
-
->>>>>>> d140f7d7a3b2a890b5010852b2a1fb3a0baf21ec
+danielC -- 2016-12-13 @00:37
+	Finished layout of homepage (still needs font styling, etc)
+	Scrapped hover idea, static image with border now instead
+	Search bar at top still needed
+	Testing on Jinja formatting needed.
