@@ -52,3 +52,10 @@ yikaiW -- 2016-12-12 @12:32
 nobelG -- 2016-12-12 @20:25
     Home page/search page functional with name/price/discount/img data.
     Not pretty yet.
+
+yikaiW -- 2016-12-12 @22:24
+	Made games twice per row
+	Overwrote container-fluid in override.css
+	Made homepage changes (logout button and logo)
+
+
