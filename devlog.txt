@@ -48,3 +48,7 @@ danielC -- 2016-12-12 @12:32
 yikaiW -- 2016-12-12 @12:32
 	Removed wells in profile for blocks
 	Working on columns of games
+
+nobelG -- 2016-12-12 @20:25
+    Home page/search page functional with name/price/discount/img data.
+    Not pretty yet.

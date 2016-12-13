@@ -7,24 +7,29 @@ from pprint import pprint
 
 app = Flask(__name__)
 
+"""
+game_data:
+[name, price, discounted (bool), discount %, image]
+"""
 @app.route('/')
 def homepage():
-    #pprint(steam_api.get_featured())
     feat = steam_api.get_featured()
-    games = []
-    for game in feat['featured_win']:
-        name = game['name']
-        price = str(game['final_price'])
-        price = price[:-2] + "." + price[-2:]
-        games.append((name, price))
-    return render_template('homepage.html', game_data=games)#, regRet = regRet)
+    pprint(feat)
+    return render_template('homepage.html', game_data=feat)#, regRet = regRet)
 
 @app.route('/search/', methods=['GET'])
 def search():
     query = request.args.get('query')
-    query = query.replace('%', ' ') 
-    gameList = get_id(query)
-    return render_template('homepage.html',game_data=gameList)
+    if not query:
+        return render_template("homepage.html")
+    ids = get_id(query)
+    results = []
+    for id_ in ids:
+        d = steam_api.get_gamedata(id_[1])
+        if d:
+            results.append(d)
+    pprint(results)
+    return render_template('homepage.html',game_data=results)
 
 if __name__ == '__main__':
     if os.path.getsize("data/database.db") == 0:

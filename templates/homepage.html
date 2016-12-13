@@ -71,11 +71,16 @@
       </div>
       </div>
 
-      <!-- Save for later
         {% for game in game_data %}
-            <p> {{game[0]}} </p>
-            <p> {{game[1]}} </p>
+            <img src="{{game[4]}}"> </a>
+            <p> Name: {{game[0]}} <br>
+            {% if game[2] %}
+                Discount: {{game[3]}}% <br>
+                Final Price: ${{game[1]}} </p>
+            {% else %}
+            Price: ${{game[1]}} <br>
+            {% endif %}
+            <br> </p>
         {% endfor %}
-	    -->
     </body>
 </html>
