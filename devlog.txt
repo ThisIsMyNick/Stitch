@@ -82,8 +82,10 @@ nobelG -- 2016-12-13 @23:21
     Fix View function error with flask
 
 harryL -- 2016-12-14 @00:08
+    Make Login and Logout mutually exclusive (so they cant appear at the same time)
     Add success/error messages on register/login
     Fix dead links in profile and homepage
+    Add titles in homepage profile
     Add homepage to title in html
     Add jinja2 for title in profile
     Stitch icon leads to homepage
@@ -93,6 +95,8 @@ danielC -- 2016-12-14 @2:04
 	fixed jinja template for homepage
 	made template for gamepage, still need to fill in jinja
 
-nobelG -- 2016-12-14 @11:02
+nobelG -- 2016-12-14 @12:10
     Use app id in wishlist
     Wishlist utility all functional -- still need frontend counterparts
+    Make profile display sale/nonsale separately
+
