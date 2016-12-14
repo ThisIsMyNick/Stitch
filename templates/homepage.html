@@ -15,20 +15,26 @@
         </div>
 
         <ul class="nav navbar-nav">
-			<li class="active"><a href="#">Homepage</a></li>
-			<li><a href="#">Profile</a></li>
+			<li class="active"><a href="/">Homepage</a></li>
+			<li><a href="/profile/">Profile</a></li>
 
 			<!--  Login for navbar -->
 			<li>
-				<form action="login.py" method="post" role="form">
-					<input type="text" name="username" placeholder="username">
+				<form action="/authenticate/" method="post" role="form">
+					<input type="text" name="user" placeholder="username">
 			</li>
 			<li>
-					<input type="password" name="password" placeholder="password">
+					<input type="password" name="pass" placeholder="password">
 			</li>
 			<li>
-					<input type="submit" name="submit" value="login">
-				</form>
+					<input type="submit" name="action" value="login">
+            </li>
+            <li>
+                    <input type="submit" name="action" value="register">
+            </li>
+            <li>
+                    {{result}}
+                </form>
 			</li>
 			<!--  Login for navbar -->
     </ul>

@@ -9,7 +9,7 @@ def login(user, password):
     db = connect(f)
     c = db.cursor()
     query = ("SELECT * FROM users WHERE username=?")
-    sel = c.execute(query,(username,));
+    sel = c.execute(query,(user,));
     
     #records with this username
     #so should be at most one record (in theory)
