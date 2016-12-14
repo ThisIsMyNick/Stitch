@@ -69,3 +69,7 @@ harryL -- 2016-12-13 @21:14
 	Fixed form action for login/register
 	Fixed session
 	
+yikaiW -- 2016-12-13 @10:28
+	Added search bar (using added fonts)
+	Made register and login dropdown (using js)
+	Added header
