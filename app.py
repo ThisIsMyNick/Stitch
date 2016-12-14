@@ -4,7 +4,7 @@ import os
 import utils.steam_api as steam_api
 from utils.search import get_id
 from pprint import pprint
-from utils import login
+from utils import login, wishlist   
 
 app = Flask(__name__)
 

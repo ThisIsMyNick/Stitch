@@ -17,7 +17,7 @@ def login(user, password):
     for record in sel:
         password = sha1(password).hexdigest()
         if (password==record[1]):
-            return "Login successful!" #no error message because it will be rerouted to mainpage
+            return "" #no error message because it will be rerouted to mainpage
         else:
             return "Invalid password."#error message
     db.close()
