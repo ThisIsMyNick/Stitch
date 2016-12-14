@@ -82,8 +82,12 @@ nobelG -- 2016-12-13 @23:21
     Fix View function error with flask
 
 harryL -- 2016-12-14 @00:08
+    Make Login and Logout mutually exclusive (so they cant appear at the same time)
     Add success/error messages on register/login
     Fix dead links in profile and homepage
-    Add homepage to title in html
-    Add jinja2 for title in profile
-    Stitch icon leads to homepage
+    Add titles in homepage profile
+    
+    
+    
+    
+    
