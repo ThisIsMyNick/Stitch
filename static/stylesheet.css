@@ -1,16 +1,29 @@
+body{
+	background-image:url(sayagata.png);
+}
+
 .games { 
     padding-right: 25%;
     padding-left: 25%; 
 }
 
+#homepageJumbo{
+	font-family: Pacifico;
+	font-size:100px;
+	font-weight: bold;
+}
+
+#jumboSmall{
+	font-family: Open sans;
+	font-size:60px;
+}
+
 #gameRow {
-    border-style: solid;
     margin-bottom: 30px;
     margin-top: 30px;
 	background-color: rgba(210,210,210,0.7);
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	max-height:106px;
-	
 }
 
 #gameRowImg{
@@ -27,7 +40,14 @@
 #gameRow .gameText{
 	padding-top: 15%;
 	display: block; 
-	font-size: 2em;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Open Sans, sans-serif;
+}
+
+#gameRow:hover{
+	border-style: solid;
+	border-color: orange;
 }
 
 
