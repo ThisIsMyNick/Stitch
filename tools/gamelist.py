@@ -1,4 +1,4 @@
-import requests
+import urllib2
 import sqlite3
 from lxml import html
 import time
@@ -11,8 +11,8 @@ def getpage(pg):
         page = ""
     else:
         page = "page" + str(pg) + "/"
-    r = requests.get('https://steamdb.info/apps/' + page)
-    tree = html.fromstring(r.content)
+    u = urllib2.urlopen("https://steamdb.info/apps/" + page)
+    tree = html.fromstring(u.read())
 
     app_ids = tree.xpath('//*[@id="table-apps"]/tbody/tr/td/a/text()')
     app_types = tree.xpath('//*[@id="table-apps"]/tbody/tr/td[2]/text()')

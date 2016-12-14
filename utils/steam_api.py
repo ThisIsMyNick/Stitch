@@ -1,4 +1,4 @@
-import requests
+import urllib2
 import json
 
 def parse_featured(s):
@@ -15,13 +15,13 @@ def parse_featured(s):
     return games
 
 def get_featured():
-    r = requests.get("http://store.steampowered.com/api/featured")
-    featured = parse_featured(r.text)
+    u = urllib2.urlopen("http://store.steampowered.com/api/featured")
+    featured = parse_featured(u.read())
     return featured
 
 def get_gamedata(gID):
-    r = requests.get("http://store.steampowered.com/api/appdetails/?appids=%s" % gID)
-    d = json.loads(r.text)
+    u = urllib2.urlopen("http://store.steampowered.com/api/appdetails/?appids=%s" % gID)
+    d = json.loads(r.read())
 
     if d[str(gID)]['success'] == False:
         return
