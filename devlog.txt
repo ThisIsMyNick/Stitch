@@ -85,14 +85,7 @@ harryL -- 2016-12-14 @00:08
     Make Login and Logout mutually exclusive (so they cant appear at the same time)
     Add success/error messages on register/login
     Fix dead links in profile and homepage
-<<<<<<< HEAD
     Add titles in homepage profile
-    
-    
-    
-    
-    
-=======
     Add homepage to title in html
     Add jinja2 for title in profile
     Stitch icon leads to homepage
@@ -101,4 +94,4 @@ danielC -- 2016-12-14 @2:04
 	finished styling homepage (hompage finished)
 	fixed jinja template for homepage
 	made template for gamepage, still need to fill in jinja
->>>>>>> 9c61748030e8c000237acd84d8fc4f842ade7634
+
