@@ -65,7 +65,7 @@ danielC -- 2016-12-13 @00:37
 	Testing on Jinja formatting needed.
 
 harryL -- 2016-12-13 @21:14
-        Added register button to homepage.html
+    Added register button to homepage.html
 	Fixed form action for login/register
 	Fixed session
 	
