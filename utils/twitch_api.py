@@ -7,14 +7,6 @@ def keys():
 
 #to connect to Twitch
 
-
-request = {
-    
-
-
-
-}
-
 if __name__ == '__main__':
     import os
     os.chdir('..')

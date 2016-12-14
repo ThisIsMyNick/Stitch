@@ -82,7 +82,13 @@ GAME ICONS HAVE TO SCALE BETTER
             {{success}}
         </div>
         {% endif %}
-
+        {% if code %}
+        <div class="alert alert-success" role="alert">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{code}}
+        </div>
+        {% endif %}
         {% if error %}
         <div class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

@@ -46,8 +46,7 @@ def getUsersFor(game):
     db.close()
     return ans
     
-
-
+    
 def removeWishlist(username,game):
     db = sqlite3.connect("data/database.db")
     c = db.cursor()
