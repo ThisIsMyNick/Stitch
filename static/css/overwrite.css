@@ -21,3 +21,8 @@
 	-webkit-justify-content: center;
 	justify-content: center;
 }
+
+.page-header {
+	margin-left: 5%;
+	width: 86%;
+}
