@@ -48,18 +48,6 @@ def getUsersFor(game):
     
 
 
-'''
-os.chdir("..")
-addWishlist("hello","a")
-addWishlist("hello","ab")
-addWishlist("hello","abc")
-addWishlist("jones","abc")
-x = getWishlist("hello")
-print(x)
-x = getWishlist("jones")
-print(x)
-'''
-=======
 def removeWishlist(username,game):
     db = sqlite3.connect("data/database.db")
     c = db.cursor()
@@ -84,4 +72,3 @@ if __name__ == '__main__':
     print x
     removeWishlist("jones", 730)
     removeWishlist("jones", 225540)
->>>>>>> dbb8ce698c5f46b0e65c4e43c7f6b1c9662d36d4
