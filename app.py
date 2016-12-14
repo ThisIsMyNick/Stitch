@@ -15,12 +15,15 @@ game_data:
 @app.route('/')
 def homepage():
     feat = steam_api.get_featured()
-    pprint(feat)
-    return render_template('homepage.html', game_data=feat)#, regRet = regRet)
+    error = request.args.get('error')
+    print error
+    success = request.args.get('success')
+    return render_template('homepage.html', game_data=feat, session=session, success=success,error=error)
 
 @app.route('/search/', methods=['GET'])
 def search():
     query = request.args.get('query')
+
     if not query:
         return render_template("homepage.html")
     ids = get_id(query)
@@ -41,22 +44,30 @@ def authenticate():
     
     if tp == "register":
         regRet = login.register(un,pw)#returns an error/success message
-        return redirect(url_for('homepage',result = regRet))
+        if regRet == 1:
+            return redirect(url_for('homepage',success="You have registered"))
+        else:
+            return redirect(url_for('homepage',error=regRet))
         
     if tp == "login":
         text = login.login(un,pw)#error message
         if text == "":#if no error message, succesful go back home
             session["Username"] = un
-            return redirect(url_for('homepage'))
-        return redirect(url_for('homepage',result=text))
-        
+            print('Username' not in session)    
+            return redirect(url_for('homepage',success="You have logged in"))
+        return redirect(url_for('homepage',error=text))
+    
 
 @app.route('/profile/')
 def myProfile():
-    username = session["Username"]
-    wl = wishlist.getWishlist(username)
-    return render_template('profile.html',username=username,wishlist=wl)
-
+    if 'Username' in session:
+        username = session["Username"]
+        wl = wishlist.getWishlist(username)
+        return render_template('profile.html',username=username,wishlist=wl)
+    else:
+        return redirect(url_for('homepage',error="You must log in first"))
+        
+        
 @app.route('/profile/<username>')
 def profile(username):
     wl = wishlist.getWishlist(username)
@@ -64,7 +75,14 @@ def profile(username):
 
 @app.route('/<gamepage>')
 def gamepage(gamepage):
-    pass
+    return '123'
+    
+@app.route("/logout/")
+def logout():
+    if "Username" in session:# can only log out if you are already logged in
+        session.pop("Username")
+    return redirect (url_for('homepage',success="Logged out"))
+
 
 if __name__ == '__main__':
     if os.path.getsize("data/database.db") == 0:
