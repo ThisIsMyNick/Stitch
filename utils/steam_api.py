@@ -21,7 +21,7 @@ def get_featured():
 
 def get_gamedata(gID):
     u = urllib2.urlopen("http://store.steampowered.com/api/appdetails/?appids=%s" % gID)
-    d = json.loads(r.read())
+    d = json.loads(u.read())
 
     if d[str(gID)]['success'] == False:
         return
@@ -31,19 +31,22 @@ def get_gamedata(gID):
 
     if data['is_free'] == True:
         price = 0
+        discounted = False
+        discount_percent = 0
     else:
-        price = data['price_overview']['final']
-        if data['price_overview']['currency'] == "EUR":
+        priceov = data['price_overview']
+        price = priceov['final']
+        if priceov['currency'] == "EUR":
             price *= 1.06
         price = str(price)
         price = price[:-2] + "." + price[-2:]
-    if not data.get('discount_percent'):
-        discountpct = 0
-        discounted = False
-    else:
-        discountpct = data['discount_percent']
-        discounted = False
-        if discountpct != 0:
-            discounted = True
+        if not priceov.get('discount_percent'):
+            discountpct = 0
+            discounted = False
+        else:
+            discountpct = priceov['discount_percent']
+            discounted = False
+            if discountpct != 0:
+                discounted = True
     img = data['header_image']
     return (name,price,discounted,discountpct,img)

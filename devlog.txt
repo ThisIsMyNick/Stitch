@@ -92,3 +92,7 @@ danielC -- 2016-12-14 @2:04
 	finished styling homepage (hompage finished)
 	fixed jinja template for homepage
 	made template for gamepage, still need to fill in jinja
+
+nobelG -- 2016-12-14 @11:02
+    Use app id in wishlist
+    Wishlist utility all functional -- still need frontend counterparts
