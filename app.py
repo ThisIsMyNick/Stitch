@@ -64,7 +64,7 @@ def profile(username):
 
 @app.route('/<gamepage>')
 def gamepage(gamepage):
-    pass
+    return 'Not implemented'
 
 if __name__ == '__main__':
     if os.path.getsize("data/database.db") == 0:
