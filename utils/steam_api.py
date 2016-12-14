@@ -32,7 +32,7 @@ def get_gamedata(gID):
     if data['is_free'] == True:
         price = 0
         discounted = False
-        discount_percent = 0
+        discountpct = 0
     else:
         priceov = data['price_overview']
         price = priceov['final']

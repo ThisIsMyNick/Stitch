@@ -22,7 +22,6 @@ def homepage():
 
 @app.route('/search/', methods=['GET'])
 def search():
-    print 'in search()'
     query = request.args.get('search')
 
     if not query:
