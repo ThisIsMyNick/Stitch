@@ -5,6 +5,7 @@ import utils.steam_api as steam_api
 from utils.search import get_id
 from utils import login, wishlist, twitch_api
 from pprint import pprint
+import urllib2
 
 
 app = Flask(__name__)
@@ -16,10 +17,23 @@ game_data:
 @app.route('/')
 def homepage():
     feat = steam_api.get_featured()
-    error = request.args.get('error')
-    print error
-    success = request.args.get('success')
-    return render_template('homepage.html', game_data=feat, session=session, success=success,error=error)
+    print(feat)
+    error = request.args.get('error') 
+    success = request.args.get('success') 
+    code = ""
+    if (request.args.get('code')):
+        code = "Twitch connection established"
+        request = {
+            'client_id':twitch_api.keys()[0];
+            'client_secret':twitch_api.keys()[1];
+            'grant_type':'authorization_code';
+            'redirect_uri':'http://127.0.0.1:5000/';
+            'code':request.args.get('code');
+        }
+        urllib2.urlopen('https://api.twitch.tv/kraken/oauth2/token',urllib2.urlencode(request))
+
+        
+    return render_template('homepage.html', game_data=feat, session=session, success=success,error=error,code=code)
 
 @app.route('/search/', methods=['GET'])
 def search():
@@ -76,9 +90,10 @@ def profile(username):
     wl = wishlist.getWishlist(username)
     return render_template('profile.html',username=username,wishlist=wl)
 
-@app.route('/<gamepage>/')
-def gamepage(gamepage):
-    return '123'
+@app.route('/gamepage/<gameid>')
+def gamepage(gameid):
+    users = wishlist.getUsersFor(gameid)
+    return render_template('profile.html',username=username,users=users)
 
 @app.route('/twitch/')
 def twitch():
