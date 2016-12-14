@@ -4,7 +4,6 @@ import steam_api
 
 def is_on_sale(x):
     gd = steam_api.get_gamedata(x)
-    print gd
     return gd[2]
 
 def getWishlist(username):
@@ -16,9 +15,9 @@ def getWishlist(username):
         games.append(x[0])
     db.close()
 
-    print "Games:", games
-    on_sale = filter(is_on_sale, games)
-    non_sale = filter(lambda x: not is_on_sale(x), games)
+    games = map(steam_api.get_gamedata, games)
+    on_sale = filter(lambda x: x[2], games)
+    non_sale = filter(lambda x: not x[2], games)
     return on_sale, non_sale
 
 

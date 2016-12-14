@@ -45,26 +45,29 @@
 
 <div class="row-fluid">
     <div class="container-fluid col-md-6 game">
-  <div class="row">
-    <div class="col-md-6">
-      <p class="gameText"> Game Name </p>
+        {% for game in wishlist[0] %}
+            <p> ON SALE </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{game[4]}}" />
+                    <p class="gameText"> {{game[0]}} </p>
+                    <p class="gameText"> Discount: {{game[3]}}% </p>
+                    <p class="gameText"> Final Price: ${{game[1]}} </p>
+                </div>
+            </div>
+        {% endfor %}
+        {% for game in wishlist[1] %}
+            <p> Others </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{game[4]}}" />
+                    <p class="gameText"> {{game[0]}} </p>
+                    <p class="gameText"> ${{game[1]}} </p>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-    <div class="col-md-6">
-      <p class="gameText"> Price </p>
-    </div>
-  </div>
 </div>
 
-<div class="container-fluid col-md-6 game">
-  <div class="row">
-    <div class="col-md-6">
-      <p class="gameText"> Game Name </p>
-    </div>
-    <div class="col-md-6">
-      <p class="gameText"> Price </p>
-    </div>
-  </div>
-</div>
-</div>
-  </body>
+</body>
 </html>
