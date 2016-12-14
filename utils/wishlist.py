@@ -6,7 +6,6 @@ def is_on_sale(x):
     gd = steam_api.get_gamedata(x)
     return gd[2]
 
-#add to profile (as wishlist table)
 def getWishlist(username):
     games = []
     db = sqlite3.connect("data/database.db")
@@ -15,17 +14,12 @@ def getWishlist(username):
     for x in data:
         games.append(x[0])
     db.close()
-
-<<<<<<< HEAD
-#add to gamepage(+ button)
-=======
     games = map(steam_api.get_gamedata, games)
     on_sale = filter(lambda x: x[2], games)
     non_sale = filter(lambda x: not x[2], games)
     return on_sale, non_sale
 
 
->>>>>>> dbb8ce698c5f46b0e65c4e43c7f6b1c9662d36d4
 def addWishlist(username,game):
     db = sqlite3.connect("data/database.db")
     c = db.cursor()
@@ -33,7 +27,6 @@ def addWishlist(username,game):
     db.commit()
     db.close()
 
-<<<<<<< HEAD
 #add to profile (- button)    
 def removeWishlist(username,game):
     db = sqlite3.connect("data/database.db")
