@@ -3,8 +3,9 @@ import sqlite3
 import os
 import utils.steam_api as steam_api
 from utils.search import get_id
-from utils import login, wishlist
+from utils import login, wishlist, twitch_api
 from pprint import pprint
+
 
 app = Flask(__name__)
 
@@ -68,17 +69,21 @@ def myProfile():
         return redirect(url_for('homepage',error="You must log in first"))
 
 
-@app.route('/profile/<username>')
+@app.route('/profile/<username>/')
 def profile(username):
     if not login.duplicate(username):
         return redirect(url_for('homepage', error="No such user"))
     wl = wishlist.getWishlist(username)
     return render_template('profile.html',username=username,wishlist=wl)
 
-@app.route('/<gamepage>')
+@app.route('/<gamepage>/')
 def gamepage(gamepage):
     return '123'
 
+@app.route('/twitch/')
+def twitch():
+    keys = twitch_api.keys()
+    return redirect('https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=http://127.0.0.1:5000/&scope=chat_login'%(keys[0]))
 @app.route("/logout/")
 def logout():
     if "Username" in session:# can only log out if you are already logged in
