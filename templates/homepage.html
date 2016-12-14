@@ -97,8 +97,9 @@
 
       <div class="games">
       <div class="container-fluid" id="homepageContainer">
-		<div class="row" id="gameRow">
-		  {% for game in game_data %}
+	  	{% for game in game_data %}
+		<div class="row" id="gameRow"> 
+			<a href="">
 			<div class="col-md-4" id="gameRowImg">
 				<img src="{{game[4]}}" class="float-xs-left"> </a>
 			</div>
@@ -114,8 +115,9 @@
 					{% endif %}
 				</p>
 			</div>
-		  {% endfor %}
+			</a>
 		</div>
+		{% endfor %}
       </div>
 
 		<br>
