@@ -95,3 +95,11 @@ danielC -- 2016-12-14 @2:04
 	fixed jinja template for homepage
 	made template for gamepage, still need to fill in jinja
 
+nobelG -- 2016-12-14 @12:10
+    Use app id in wishlist
+    Wishlist utility all functional -- still need frontend counterparts
+    Make profile display sale/nonsale separately
+
+yikaiW -- 2016-12-14 @12:25
+      Added DocumentChanges.pdf
+

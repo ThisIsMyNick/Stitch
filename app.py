@@ -3,8 +3,8 @@ import sqlite3
 import os
 import utils.steam_api as steam_api
 from utils.search import get_id
+from utils import login, wishlist
 from pprint import pprint
-from utils import login, wishlist   
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ def homepage():
 
 @app.route('/search/', methods=['GET'])
 def search():
-    query = request.args.get('query')
+    query = request.args.get('search')
 
     if not query:
         return render_template("homepage.html")
@@ -41,22 +41,22 @@ def authenticate():
     pw = request.form["pass"]
     un = request.form["user"]
     tp = request.form["action"]#login vs. register
-    
+
     if tp == "register":
         regRet = login.register(un,pw)#returns an error/success message
         if regRet == 1:
             return redirect(url_for('homepage',success="You have registered"))
         else:
             return redirect(url_for('homepage',error=regRet))
-        
+
     if tp == "login":
         text = login.login(un,pw)#error message
         if text == "":#if no error message, succesful go back home
             session["Username"] = un
-            print('Username' not in session)    
+            print('Username' not in session)
             return redirect(url_for('homepage',success="You have logged in"))
         return redirect(url_for('homepage',error=text))
-    
+
 
 @app.route('/profile/')
 def myProfile():
@@ -66,17 +66,19 @@ def myProfile():
         return render_template('profile.html',username=username,wishlist=wl)
     else:
         return redirect(url_for('homepage',error="You must log in first"))
-        
-        
+
+
 @app.route('/profile/<username>')
 def profile(username):
+    if not login.duplicate(username):
+        return redirect(url_for('homepage', error="No such user"))
     wl = wishlist.getWishlist(username)
     return render_template('profile.html',username=username,wishlist=wl)
 
 @app.route('/<gamepage>')
 def gamepage(gamepage):
     return '123'
-    
+
 @app.route("/logout/")
 def logout():
     if "Username" in session:# can only log out if you are already logged in
@@ -90,7 +92,7 @@ if __name__ == '__main__':
         c = db.cursor()
         print "Initializing database"
         c.execute("CREATE TABLE users (username TEXT, password TEXT)")
-        c.execute("CREATE TABLE wishlist (username TEXT, games TEXT)")
+        c.execute("CREATE TABLE wishlist (username TEXT, game ID)")
         db.commit()
         db.close()
     app.debug=True
