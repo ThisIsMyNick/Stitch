@@ -19,10 +19,10 @@ def login(user, password):
         if (password==record[1]):
             return "" #no error message because it will be rerouted to mainpage
         else:
-            return "Invalid password."#error message
+            return "Invalid password"#error message
     db.close()
     
-    return "User does not exist."#error message
+    return "User does not exist"#error message
 
 def register(user, password):
     db = connect(f)
@@ -45,16 +45,16 @@ def regMain(user, password):#register helper
         c.execute(query, (user, password))
         db.commit()
         db.close()
-        return "Account created!"
+        return 1
     db.commit()
     db.close()
     return reg#return error message
         
 def regReqs(user, password):      #error message generator
     if duplicate(user):          #checks if username already exists
-        return "Username already exists."
+        return "Username already exists"
     if " " in user:
-        return "Spaces not allowed in username."
+        return "Spaces not allowed in username"
     return ""
 
 def duplicate(user):#checks if username already exists

@@ -9,6 +9,8 @@
 
       <script src="../static/js/jquery.min.js"></script>
       <script src="../static/js/bootstrap.min.js"></script>
+        
+      <title>Stitch</title>
     </head>
 
     <body>
@@ -16,7 +18,7 @@
 	<nav class="navbar navbar-default navbar-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#"><img src="../static/icon.jpg" width="40" height="40"></a>
+          <a class="navbar-brand" href="/"><img src="../static/icon.jpg" width="40" height="40"></a>
         </div>
         <ul class="nav navbar-nav">
 			<li class="active"><a href="/">Homepage</a></li>
@@ -33,8 +35,9 @@
       </div>
       <ul class="nav navbar-nav navbar-right">
         <!--  Login for navbar -->
+        {% if 'Username' not in session %}
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown">Login<span class="caret"></span></a>
 			<ul id="login-dp" class="dropdown-menu">
 				<li>
 					 <div class="row">
@@ -48,24 +51,42 @@
 											 <input type="password" name="pass" class="form-control" placeholder="Password">
 										</div>
 										<div class="form-group">
-											 <input type="submit" name="action" class="btn btn-primary btn-block" value="Login">
+											 <input type="submit" name="action" class="btn btn-primary btn-block" value="login">
 										</div>
-								 </form>
+								 
 							</div>
 							<div class="bottom text-center">
-								New here?  <input type="submit" class="btn btn-primary btn-sm" name="action" value="Register">
+								New here?  <input type="submit" class="btn btn-primary btn-sm" name="action" value="register">
+                                </form>
 							</div>
 					 </div>
 				</li>
 			</ul>
-    </li>
+        </li>
+        {% else %}
   			<!--  Login for navbar -->
-        <li><a href="#">Logout</a></li>
+        <li><a href="/logout/">Logout</a></li>
+        {% endif %}
       </ul>
       </div>
     </nav>
-
-      <div class="jumbotron text-center">
+    {% if success %}
+    <div class="alert alert-success" role="alert">
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{success}}
+    </div>
+    {% endif %}
+    
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      {{error}}
+    </div>
+    {% endif %}
+    
+    <div class="jumbotron text-center">
 	<h1 id="homepageJumbo"> Stitch </h1>
 	<h3 id="jumboSmall">Your gaming hub</h3>
       </div>
@@ -95,7 +116,7 @@
 			</div>
 		  {% endfor %}
 		</div>
-		</div>
+      </div>
 
 		<br>
 		<br>
