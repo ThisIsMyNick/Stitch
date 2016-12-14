@@ -83,7 +83,6 @@ def logout():
         session.pop("Username")
     return redirect (url_for('homepage',success="Logged out"))
 
-
 if __name__ == '__main__':
     if os.path.getsize("data/database.db") == 0:
         f = "data/database.db"
