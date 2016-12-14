@@ -100,3 +100,6 @@ nobelG -- 2016-12-14 @12:10
     Wishlist utility all functional -- still need frontend counterparts
     Make profile display sale/nonsale separately
 
+yikaiW -- 2016-12-14 @12:25
+      Added DocumentChanges.pdf
+
