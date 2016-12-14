@@ -27,23 +27,22 @@ body{
 }
 
 #gameRowImg{
-	position: cover;
+	position:relative;
 	left:-15px;
 	display:block;
-	height:300px;
-	width:100px;
-	max-height: 100px;
-	max-width:500px;
-	overflow:hidden
+	height:auto;
+	width:30%;
+	max-height:100px;
+	overflow:hidden;
 }
 
 #gameRow .gameText{
-	padding-top: 15%;
 	display: block; 
 	font-size: 10px;
 	font-weight: bold;
 	font-family: Open Sans, sans-serif;
 	overflow:hidden;
+	text-color: black;
 }
 
 #gameRow:hover{
