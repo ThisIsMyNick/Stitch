@@ -98,7 +98,11 @@ def gamepage(gameid):
     game = steam_api.get_gamedata(gameid)
     streamName = twitch_api.getStreamName(gameid)
     users = wishlist.getUsersFor(gameid)
-    return render_template('gamepage.html',game=game,streamer=streamName,users=users)
+
+    username = None
+    if 'Username' in session:
+        username = session["Username"]
+    return render_template('gamepage.html',game=game,streamer=streamName,users=users, username=username)
 
 @app.route('/twitch/')
 def twitch():
@@ -131,4 +135,5 @@ if __name__ == '__main__':
         db.close()
     app.debug=True
     app.secret_key = '  \x43\xd2\x34\x92\x5b\x4a\x80\xfc\xc6\xb0\x0e\x45\xdd\x51\x36\xc0\xd2\x3a\x85\x42\x57\xbb\x61\xf2\x7b\xb6\xfc\x17\x3b\x1a\xda\x5b\x6d\x7d\x0a\xff\xd3\x6f\xfa\x7c\x1b\xa8\x0f\x7f\x53\x18\x8d\x91\x16\x81'
+    app.jinja_env.globals.update(inWishlist=wishlist.inWishlist)
     app.run()

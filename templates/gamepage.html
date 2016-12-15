@@ -107,9 +107,12 @@ STEAM REVIEWS
 		<h1 id="homepageJumbo"> {{game[0]}} </h1>
       </div>
 
-    
+
 	<div class="container-fluid">
+
         <center>
+        
+        
         <div class="row">
             <img src="{{game[4]}}" class="img-responsive"> </img>
             <br>
@@ -138,15 +141,18 @@ STEAM REVIEWS
             </div>
         
         </div>
-    </div>
-    
-	<div class="container-fluid">
-		<div class="row">
-			<!-- Streamer -->
-			<br>
-			<!-- link -->
-		</div>
-
+        <div class="row">
+                    
+            <form class="form" role="form" action="/" method="post">
+            <h3>{{game[0]}}
+            {% if username and not inWishlist(username, game[5]) %}
+            <input type="submit" style="margin-left: 2%;" class="btn btn-primary btn-sm" name="action" value="Add to Wishlist">
+            {% elif username %}
+            <input type="submit" style="margin-left: 2%;" class="btn btn-primary btn-sm" name="action" value="Remove from Wishlist">
+            {% endif %}
+            </h3>
+            </form>
+        </div>
 	</div>
 
 	
