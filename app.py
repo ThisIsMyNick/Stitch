@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 import sqlite3
 import os
+import json
 import utils.steam_api as steam_api
 from utils.search import get_id
 from utils import login, wishlist, twitch_api
 from pprint import pprint
-import urllib2
+import urllib,urllib2
 
 
 app = Flask(__name__)
@@ -17,7 +18,6 @@ game_data:
 @app.route('/')
 def homepage():
     feat = steam_api.get_featured()
-    print(feat)
     error = request.args.get('error') 
     success = request.args.get('success') 
     code = ""
@@ -31,10 +31,14 @@ def homepage():
             'redirect_uri':'http://127.0.0.1:5000/',
             'code':request.args.get('code')
         }
-        x = urllib2.urlopen('https://api.twitch.tv/kraken/oauth2/token',urllib2.urlencode(req))
-        print(x.read())
+        url = 'https://api.twitch.tv/kraken/oauth2/token'
+        x = urllib2.urlopen(url,urllib.urlencode(req))
+        data = json.loads(x)
+        session['token'] = data['access_token']
         
-    return render_template('homepage.html', game_data=feat, session=session, success=success,error=error,code=code)
+    return render_template('homepage.html', game_data=feat, 
+                            session=session, success=success,
+                            error=error,code=code)
 
 @app.route('/search/', methods=['GET'])
 def search():
@@ -97,9 +101,12 @@ def gamepage(gameid):
 
 @app.route('/twitch/')
 def twitch():
-    keys = twitch_api.keys()
-    return redirect('https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=http://127.0.0.1:5000/&scope=chat_login'%(keys[0]))
+    if 'Username' in session:
     
+        keys = twitch_api.keys()
+        return redirect('https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=http://127.0.0.1:5000/&scope=chat_login'%(keys[0]))
+    else:
+        return redirect(url_for('homepage',error="You must log in first"))
 @app.route("/logout/")
 def logout():
     if "Username" in session:# can only log out if you are already logged in
