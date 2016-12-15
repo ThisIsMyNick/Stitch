@@ -119,3 +119,8 @@ harryL -- 2016-12-15 @01:06
     Changed titles/headers in search, profile, homepage
     Add approute for wishlist function
     Add error message if using twitch without logging in first
+
+danielC -- 2016-12-15 @1:51
+	Finished adding wishlist and profiles
+	Fixed bug with profiles not leading to correct path
+	Finished minor stlying

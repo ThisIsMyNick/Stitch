@@ -1,5 +1,6 @@
 body{
 	background-image:url(sayagata.png);
+	margin-bottom:10%;
 }
 
 .games { 
@@ -30,7 +31,6 @@ body{
     left:-15px;
     float: left;
     display:block;
-    height: 100%;
     max-height: 100px;
     overflow:hidden;
 }
@@ -41,7 +41,7 @@ body{
 	font-weight: bold;
 	font-family: Open Sans, sans-serif;
 	overflow:hidden;
-	text-color: black;
+	color: black;
 }
 
 #gameRow:hover{

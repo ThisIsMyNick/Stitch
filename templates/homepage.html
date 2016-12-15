@@ -102,12 +102,15 @@ GAME ICONS HAVE TO SCALE BETTER
         </div>
 
         <div class="page-header">
+	  <center>
             <h2>Featured Games:</h2>
-        </div>
+	    </center>
+	</div>
 
         <div class="games">
             <div class="container-fluid" id="homepageContainer">
-                {% for game in game_data %}
+              {% for game in game_data %}
+	      <a href="/gamepage/{{game[5]}}">
                 <div class="row" id="gameRow">
                     <a href="/gamepage/{{game[5]}}">
                         <div class="col-md-6" id="gameRowImg">
@@ -125,8 +128,8 @@ GAME ICONS HAVE TO SCALE BETTER
                             {% endif %}
                             </p>
                         </div>
-                        </a>
-                </div>
+</div>
+</a>
                 {% endfor %}
             </div>
 

@@ -119,7 +119,7 @@ STEAM REVIEWS
         </div>
         
         <div class="row">
-            <a href="{{game[6]}}">Get it on Steam</a>
+            <a href="{{game[6]}}" style="font-size:2em">Get it on Steam</a>
             <br>
             <br><br>
         </div>
@@ -158,29 +158,18 @@ STEAM REVIEWS
 	
 	</div>
 
-	<div class="container-fluid">
-		<div class="row">
-			{{game[0]}}
-			<br>
-			{{game[6]}}
-			<!-- steampage link -->
-		</div>
-
-		<div class="row">
-		  <div class="col-md-6">
-		    {% for name in wishlist %}
-		    {{name[0]}}
+<div class="container-fluid">
+  <center>
+    <div class="row">
+      <br>
+		  <p><b> Others who wishlisted this game: </b></p>
+		    {% for item in users%}
+		    <a href="../profile/{{item[0]}}" style="font-size:20px"> {{item[0]}} </a>
 		    <br>
+		    {% endfor %}
 		    <!-- picture -->
-		  </div>
 		</div>
-
-		<div class="row">
-		  <div class="col-md-6">
-
-		    </div>
-		</div>
-
+  </center>
 	</div>
 
     
