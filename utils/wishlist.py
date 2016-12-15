@@ -19,6 +19,13 @@ def getWishlist(username):
     non_sale = filter(lambda x: not x[2], games)
     return on_sale, non_sale
 
+def inWishlist(username, game):
+    db = sqlite3.connect("data/database.db")
+    c = db.cursor()
+    data = c.execute("SELECT * FROM wishlist WHERE username=? AND game=?", (username, game))
+    ret = data.fetchone() != None
+    db.close()
+    return ret
 
 def addWishlist(username,game):
     db = sqlite3.connect("data/database.db")
@@ -67,6 +74,7 @@ if __name__ == '__main__':
     clearWishlist("jones")
     addWishlist("jones",730)
     addWishlist("jones", 225540)
+    inWishlist("jones", 730)
     x = getWishlist("jones")
     print x
     removeWishlist("jones", 730)
