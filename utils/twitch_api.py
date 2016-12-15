@@ -1,5 +1,6 @@
 import httplib, urllib2, base64, json, urllib
 from utils.steam_api import get_gamedata
+
 def keys():
 	k = open("keys.csv", "r").readline();
 	k = k.split(",")
@@ -26,11 +27,15 @@ def getStreamName(gameID):
     if data["_total"] > 0:
         for x in data['streams']:
             if x['game'] == name:
-                print x
                 return x['channel']['name']
         return -1
     else:
         return -1
 
-
+if __name__ == '__main__':
+    import os
+    from steam_api import get_gamedata
+    os.chdir('..')
+    print(getStreamName(730))
+    
     

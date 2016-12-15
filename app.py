@@ -95,9 +95,10 @@ def profile(username):
 
 @app.route('/gamepage/<gameid>')
 def gamepage(gameid):
+    game = steam_api.get_gamedata(gameid)
     streamName = twitch_api.getStreamName(gameid)
     users = wishlist.getUsersFor(gameid)
-    return render_template('gamepage.html',streamer=streamName,users=users)
+    return render_template('gamepage.html',game=game,streamer=streamName,users=users)
 
 @app.route('/twitch/')
 def twitch():
