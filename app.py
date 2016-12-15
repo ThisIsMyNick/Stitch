@@ -17,7 +17,7 @@ game_data:
 @app.route('/')
 def homepage():
     feat = steam_api.get_featured()
-    print(feat)
+    #print(feat)
     error = request.args.get('error') 
     success = request.args.get('success') 
     code = ""
@@ -25,15 +25,15 @@ def homepage():
         code = "Twitch connection established"
         keys = twitch_api.keys()
         req = {
-            'client_id':keys[0],
-            'client_secret':keys[1],
-            'grant_type':'authorization_code',
-            'redirect_uri':'http://127.0.0.1:5000/',
-            'code':request.args.get('code')
-        }
+                'client_id':keys[0],
+                'client_secret':keys[1],
+                'grant_type':'authorization_code',
+                'redirect_uri':'http://127.0.0.1:5000/',
+                'code':request.args.get('code')
+                }
         x = urllib2.urlopen('https://api.twitch.tv/kraken/oauth2/token',urllib2.urlencode(req))
         print(x.read())
-        
+
     return render_template('homepage.html', game_data=feat, session=session, success=success,error=error,code=code)
 
 @app.route('/search/', methods=['GET'])
@@ -99,12 +99,12 @@ def gamepage(gameid):
 def twitch():
     keys = twitch_api.keys()
     return redirect('https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=http://127.0.0.1:5000/&scope=chat_login'%(keys[0]))
-    
+
 @app.route("/logout/")
 def logout():
     if "Username" in session:# can only log out if you are already logged in
         session.pop("Username")
-    
+
     if "token" in session:# log out twitch token
         session.pop("token")
     return redirect (url_for('homepage',success="Logged out"))
