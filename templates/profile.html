@@ -57,8 +57,9 @@ NEEDS SEARCH BAR FIXED + WORKING
         {% for game in wishlist[0] %}
             <p> ON SALE </p>
             <div class="row">
+                
                 <div class="col-md-6">
-                    <img src="{{game[4]}}" />
+                    <img src="{{game[4]}}" class="img-responsive"></img>
                     <p class="gameText"> {{game[0]}} </p>
                     <p class="gameText"> Discount: {{game[3]}}% </p>
                     <p class="gameText"> Final Price: ${{game[1]}} </p>
@@ -69,7 +70,7 @@ NEEDS SEARCH BAR FIXED + WORKING
             <p> Others </p>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{game[4]}}" />
+                    <img src="{{game[4]}}" class="img-responsive"></img>
                     <p class="gameText"> {{game[0]}} </p>
                     <p class="gameText"> Price: ${{game[1]}} </p>
                 </div>

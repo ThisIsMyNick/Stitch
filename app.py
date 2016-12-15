@@ -51,7 +51,7 @@ def search():
         d = steam_api.get_gamedata(id_[1])
         if d:
             results.append(d)
-    return render_template('homepage.html',game_data=results)
+    return render_template('search.html',game_data=results)
 
 
 @app.route('/authenticate/', methods=['POST'])
@@ -98,12 +98,23 @@ def gamepage(gameid):
     game = steam_api.get_gamedata(gameid)
     streamName = twitch_api.getStreamName(gameid)
     users = wishlist.getUsersFor(gameid)
-
+    success = request.args.get('success')
+    
     username = None
     if 'Username' in session:
         username = session["Username"]
-    return render_template('gamepage.html',game=game,streamer=streamName,users=users, username=username)
+    return render_template('gamepage.html',success=success,game=game,streamer=streamName,users=users, username=username)
 
+@app.route('/wishlist/<gameid>', methods=['POST'])
+def changeWishlist(gameid):
+    user = session['Username']
+    if request.form["action"] == "Add to Wishlist":
+        wishlist.addWishlist(user,gameid)
+    elif request.form["action"] == "Remove from Wishlist":
+        wishlist.removeWishlist(user,gameid)
+    return redirect(url_for('gamepage',gameid=gameid))
+
+    
 @app.route('/twitch/')
 def twitch():
     if 'token' in session:
