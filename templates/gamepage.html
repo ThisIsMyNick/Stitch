@@ -138,18 +138,19 @@ STEAM REVIEWS
 
 	<div class="container-fluid">
 		<div class="row">
-			<!-- title -->
+			{{game[0]}}
 			<br>
+			{{game[6]}}
 			<!-- steampage link -->
 		</div>
 
 		<div class="row">
-			<div class="col-md-5">
-				<!-- picture -->
-			</div>
-			<div class="col-md-7">
-				<!-- reviews -->
-			</div>
+		  <div class="col-md-6">
+		    {% for name in wishlist %}
+		    {{name[0]}}
+		    <br>
+		    <!-- picture -->
+		  </div>
 		</div>
 
 		<div class="row">
