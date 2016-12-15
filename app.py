@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 import sqlite3
 import os
-import utils.steam_api as steam_api
+import json
 from utils.search import get_id
-from utils import login, wishlist, twitch_api
+from utils import login, wishlist,steam_api,twitch_api
 from pprint import pprint
-import urllib2
+import urllib,urllib2
 
 
 app = Flask(__name__)
@@ -17,7 +17,6 @@ game_data:
 @app.route('/')
 def homepage():
     feat = steam_api.get_featured()
-    #print(feat)
     error = request.args.get('error') 
     success = request.args.get('success') 
     code = ""
@@ -25,16 +24,20 @@ def homepage():
         code = "Twitch connection established"
         keys = twitch_api.keys()
         req = {
-                'client_id':keys[0],
-                'client_secret':keys[1],
-                'grant_type':'authorization_code',
-                'redirect_uri':'http://127.0.0.1:5000/',
-                'code':request.args.get('code')
-                }
-        x = urllib2.urlopen('https://api.twitch.tv/kraken/oauth2/token',urllib2.urlencode(req))
-        print(x.read())
-
-    return render_template('homepage.html', game_data=feat, session=session, success=success,error=error,code=code)
+            'client_id':keys[0],
+            'client_secret':keys[1],
+            'grant_type':'authorization_code',
+            'redirect_uri':'http://127.0.0.1:5000/',
+            'code':request.args.get('code')
+        }
+        url = 'https://api.twitch.tv/kraken/oauth2/token'
+        x = urllib2.urlopen(url,urllib.urlencode(req))
+        data = json.loads(x.read())
+        session['token'] = data['access_token']
+        
+    return render_template('homepage.html', game_data=feat, 
+                            session=session, success=success,
+                            error=error,code=code)
 
 @app.route('/search/', methods=['GET'])
 def search():
@@ -92,13 +95,24 @@ def profile(username):
 
 @app.route('/gamepage/<gameid>')
 def gamepage(gameid):
+    game = steam_api.get_gamedata(gameid)
+    streamName = twitch_api.getStreamName(gameid)
     users = wishlist.getUsersFor(gameid)
-    return render_template('profile.html',username=username,users=users)
+
+    username = None
+    if 'Username' in session:
+        username = session["Username"]
+    return render_template('gamepage.html',game=game,streamer=streamName,users=users, username=username)
 
 @app.route('/twitch/')
 def twitch():
-    keys = twitch_api.keys()
-    return redirect('https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=http://127.0.0.1:5000/&scope=chat_login'%(keys[0]))
+    if 'token' in session:
+        return redirect(url_for('homepage',error="You are already connected to Twitch"))  
+    if 'Username' in session:
+        keys = twitch_api.keys()
+        return redirect('https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=http://127.0.0.1:5000/&scope=chat_login'%(keys[0]))
+    else:
+        return redirect(url_for('homepage',error="You must log in first"))
 
 @app.route("/logout/")
 def logout():
@@ -116,9 +130,10 @@ if __name__ == '__main__':
         c = db.cursor()
         print "Initializing database"
         c.execute("CREATE TABLE users (username TEXT, password TEXT)")
-        c.execute("CREATE TABLE wishlist (username TEXT, game ID)")
+        c.execute("CREATE TABLE wishlist (username TEXT, game INTEGER)")
         db.commit()
         db.close()
     app.debug=True
     app.secret_key = '  \x43\xd2\x34\x92\x5b\x4a\x80\xfc\xc6\xb0\x0e\x45\xdd\x51\x36\xc0\xd2\x3a\x85\x42\x57\xbb\x61\xf2\x7b\xb6\xfc\x17\x3b\x1a\xda\x5b\x6d\x7d\x0a\xff\xd3\x6f\xfa\x7c\x1b\xa8\x0f\x7f\x53\x18\x8d\x91\x16\x81'
+    app.jinja_env.globals.update(inWishlist=wishlist.inWishlist)
     app.run()

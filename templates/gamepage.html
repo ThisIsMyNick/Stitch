@@ -21,7 +21,7 @@ STEAM REVIEWS
         <script src="../static/js/jquery.min.js"></script>
         <script src="../static/js/bootstrap.min.js"></script>
 
-        <title>Stitch</title>
+        <title>{{game[0]}}</title>
     </head>
 
     <body>
@@ -104,36 +104,58 @@ STEAM REVIEWS
         {% endif %}
 
       <div class="jumbotron text-center">
-		<h1 id="homepageJumbo"> Stitch </h1>
-		<h3>Your gaming hub</h3>
+		<h1 id="homepageJumbo"> {{game[0]}} </h1>
       </div>
 
 
 	<div class="container-fluid">
-	<center>
-    <script src= "http://player.twitch.tv/js/embed/v1.js"></script>
-    <div id="{PLAYER_DIV_ID}"></div>
-    <script type="text/javascript">
-        var options = {
-            width: 854,
-            height: 480,
-            channel: "{CHANNEL}",
-            //video: "{VIDEO_ID}"
-        };
-        var player = new Twitch.Player("{PLAYER_DIV_ID}", options);
-        player.setVolume(0.5);
-    </script>
 
-	<div class="container-fluid">
-		<div class="row">
-			<!-- Streamer -->
-			<br>
-			<!-- link -->
-		</div>
-
+        <center>
+        
+        
+        <div class="row">
+            <img src="{{game[4]}}" class="img-responsive"> </img>
+            <br>
+        </div>
+        
+        <div class="row">
+            <a href="{{game[6]}}">Get it on Steam</a>
+            <br>
+            <br><br>
+        </div>
+        </center>
+        <div class="row">
+            <div class="col-md-8">
+    
+                <div id="maindiv"></div>
+                
+            </div>
+            <div class="col-md-4">    
+                <iframe frameborder="0"
+                    scrolling="no"
+                    id="chat_embed"
+                    src="http://www.twitch.tv/{{streamer}}/chat"
+                    height="450"
+                    width="400">
+                </iframe>
+            </div>
+        
+        </div>
+        <div class="row">
+                    
+            <form class="form" role="form" action="/" method="post">
+            <h3>{{game[0]}}
+            {% if username and not inWishlist(username, game[5]) %}
+            <input type="submit" style="margin-left: 2%;" class="btn btn-primary btn-sm" name="action" value="Add to Wishlist">
+            {% elif username %}
+            <input type="submit" style="margin-left: 2%;" class="btn btn-primary btn-sm" name="action" value="Remove from Wishlist">
+            {% endif %}
+            </h3>
+            </form>
+        </div>
 	</div>
 
-	</center>
+	
 	</div>
 
 	<div class="container-fluid">
@@ -161,7 +183,17 @@ STEAM REVIEWS
 
 	</div>
 
-
-
+    
+    <script src= "http://player.twitch.tv/js/embed/v1.js"></script>
+    <script type="text/javascript">
+                    var options = {
+                        width: 800,
+                        height: 450,
+                        channel: "{{streamer}}",
+                        //video: "{VIDEO_ID}"
+                    };
+                    var player = new Twitch.Player("maindiv", options);
+                    player.setVolume(0.5);
+    </script>
     </body>
 </html>

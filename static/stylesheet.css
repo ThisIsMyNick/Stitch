@@ -37,7 +37,7 @@ body{
 
 #gameRow .gameText{
 	display: block; 
-	font-size: 10px;
+	font-size: 1em;
 	font-weight: bold;
 	font-family: Open Sans, sans-serif;
 	overflow:hidden;

@@ -109,7 +109,7 @@ GAME ICONS HAVE TO SCALE BETTER
             <div class="container-fluid" id="homepageContainer">
                 {% for game in game_data %}
                 <div class="row" id="gameRow">
-                    <a href="/gamepage/{{gameid}}">
+                    <a href="/gamepage/{{game[5]}}">
                         <div class="col-md-6" id="gameRowImg">
                             <img src="{{game[4]}}" class="img-responsive"  height="100px"> </img>
                         </div>

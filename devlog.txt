@@ -103,3 +103,12 @@ nobelG -- 2016-12-14 @12:10
 yikaiW -- 2016-12-14 @12:25
       Added DocumentChanges.pdf
 
+yikaiW -- 2016-12-14 @20:10
+	Made navbar consistent in webpages
+
+nobelG -- 2016-12-15 @00:03
+    Add app id, steam url to gamedata
+    Don't show wishlist if empty
+    Fix app_id generator to remove unavailable games/nongames
+    Fix app_id generator to remove duplicates
+    Several bug fixes
