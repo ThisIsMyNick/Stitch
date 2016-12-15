@@ -21,7 +21,7 @@ STEAM REVIEWS
         <script src="../static/js/jquery.min.js"></script>
         <script src="../static/js/bootstrap.min.js"></script>
 
-        <title>Stitch</title>
+        <title>{{game[0]}}</title>
     </head>
 
     <body>
@@ -104,27 +104,41 @@ STEAM REVIEWS
         {% endif %}
 
       <div class="jumbotron text-center">
-		<h1 id="homepageJumbo"> Stitch </h1>
-		<h3>Your gaming hub</h3>
+		<h1 id="homepageJumbo"> {{game[0]}} </h1>
       </div>
 
     
 	<div class="container-fluid">
-	<center>
-    <img src="{{game[4]}}" class="float-xs-left"> </img>
+        <center>
+        <div class="row">
+            <img src="{{game[4]}}" class="img-responsive"> </img>
+            <br>
+        </div>
+        
+        <div class="row">
+            <a href="{{game[6]}}">Get it on Steam</a>
+            <br>
+            <br><br>
+        </div>
+        </center>
+        <div class="row">
+            <div class="col-md-8">
     
-    <script src= "http://player.twitch.tv/js/embed/v1.js"></script>
-    <div id="maindiv"></div>
-    <script type="text/javascript">
-        var options = {
-            width: 854,
-            height: 480,
-            channel: "{{streamer}}",
-            //video: "{VIDEO_ID}"
-        };
-        var player = new Twitch.Player("maindiv", options);
-        player.setVolume(0.5);
-    </script>
+                <div id="maindiv"></div>
+                
+            </div>
+            <div class="col-md-4">    
+                <iframe frameborder="0"
+                    scrolling="no"
+                    id="chat_embed"
+                    src="http://www.twitch.tv/{{streamer}}/chat"
+                    height="450"
+                    width="400">
+                </iframe>
+            </div>
+        
+        </div>
+    </div>
     
 	<div class="container-fluid">
 		<div class="row">
@@ -135,7 +149,7 @@ STEAM REVIEWS
 
 	</div>
 
-	</center>
+	
 	</div>
 
 	<div class="container-fluid">
@@ -162,7 +176,17 @@ STEAM REVIEWS
 
 	</div>
 
-
-
+    
+    <script src= "http://player.twitch.tv/js/embed/v1.js"></script>
+    <script type="text/javascript">
+                    var options = {
+                        width: 800,
+                        height: 450,
+                        channel: "{{streamer}}",
+                        //video: "{VIDEO_ID}"
+                    };
+                    var player = new Twitch.Player("maindiv", options);
+                    player.setVolume(0.5);
+    </script>
     </body>
 </html>
