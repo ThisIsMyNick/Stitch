@@ -34,7 +34,6 @@ def homepage():
         url = 'https://api.twitch.tv/kraken/oauth2/token'
         x = urllib2.urlopen(url,urllib.urlencode(req))
         data = json.loads(x.read())
-        #data = json.loads(x)
         session['token'] = data['access_token']
         
     return render_template('homepage.html', game_data=feat, 
