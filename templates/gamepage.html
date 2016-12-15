@@ -108,11 +108,24 @@ STEAM REVIEWS
 		<h3>Your gaming hub</h3>
       </div>
 
-    
+
 	<div class="container-fluid">
 	<center>
+
+    <form class="form" role="form" action="/" method="post">
+    <h3>{{game[0]}}
+    {% if !gameAdded %}
+    <input type="submit" style="margin-left: 2%;" class="btn btn-primary btn-sm" name="action" value="Add to Wishlist">
+    {% else %}
+    <input type="submit" style="margin-left: 2%;" class="btn btn-primary btn-sm" name="action" value="Remove from Wishlist">
+    {% endif %}
+    </h3>
+    </form>
+
     <img src="{{game[4]}}" class="float-xs-left"> </img>
-    
+
+    <br><br>
+
     <script src= "http://player.twitch.tv/js/embed/v1.js"></script>
     <div id="maindiv"></div>
     <script type="text/javascript">
@@ -125,7 +138,7 @@ STEAM REVIEWS
         var player = new Twitch.Player("maindiv", options);
         player.setVolume(0.5);
     </script>
-    
+
 	<div class="container-fluid">
 		<div class="row">
 			<!-- Streamer -->
