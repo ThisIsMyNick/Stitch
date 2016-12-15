@@ -33,9 +33,9 @@ def homepage():
         }
         url = 'https://api.twitch.tv/kraken/oauth2/token'
         x = urllib2.urlopen(url,urllib.urlencode(req))
-        print(type(x))
+        data = json.loads(x.read())
         #data = json.loads(x)
-        #session['token'] = data['access_token']
+        session['token'] = data['access_token']
         
     return render_template('homepage.html', game_data=feat, 
                             session=session, success=success,
@@ -102,6 +102,8 @@ def gamepage(gameid):
 
 @app.route('/twitch/')
 def twitch():
+    if 'token' in session:
+        return redirect(url_for('homepage',error="You are already connected to Twitch"))  
     if 'Username' in session:
         keys = twitch_api.keys()
         return redirect('https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=http://127.0.0.1:5000/&scope=chat_login'%(keys[0]))
@@ -124,7 +126,7 @@ if __name__ == '__main__':
         c = db.cursor()
         print "Initializing database"
         c.execute("CREATE TABLE users (username TEXT, password TEXT)")
-        c.execute("CREATE TABLE wishlist (username TEXT, game ID)")
+        c.execute("CREATE TABLE wishlist (username TEXT, game INTEGER)")
         db.commit()
         db.close()
     app.debug=True

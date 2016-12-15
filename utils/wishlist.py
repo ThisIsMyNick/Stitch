@@ -31,7 +31,7 @@ def addWishlist(username,game):
 def removeWishlist(username,game):
     db = sqlite3.connect("data/database.db")
     c = db.cursor()
-    data = c.execute("DELETE FROM wishlist WHERE username=? AND games=?",(username,game,))
+    data = c.execute("DELETE FROM wishlist WHERE username=? AND game=?",(username,game,))
     db.commit()
     db.close()
 
@@ -40,7 +40,7 @@ def getUsersFor(game):
     ans = []
     db = sqlite3.connect("data/database.db")
     c = db.cursor()
-    data = c.execute("SELECT username FROM wishlist WHERE games=?",(game,))  
+    data = c.execute("SELECT username FROM wishlist WHERE game=?",(game,))  
     for x in data:
         ans.append(x)
     db.close()
