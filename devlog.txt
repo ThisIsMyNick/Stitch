@@ -112,3 +112,10 @@ nobelG -- 2016-12-15 @00:03
     Fix app_id generator to remove unavailable games/nongames
     Fix app_id generator to remove duplicates
     Several bug fixes
+
+harryL -- 2016-12-15 @01:06
+    Completed twitch api
+    Added twitch video and chat to gamepage
+    Changed titles/headers in search, profile, homepage
+    Add approute for wishlist function
+    Add error message if using twitch without logging in first
