@@ -2,9 +2,8 @@ from flask import Flask, render_template, request, session, url_for, redirect
 import sqlite3
 import os
 import json
-import utils.steam_api as steam_api
 from utils.search import get_id
-from utils import login, wishlist, twitch_api
+from utils import login, wishlist,steam_api,twitch_api
 from pprint import pprint
 import urllib,urllib2
 
@@ -96,8 +95,9 @@ def profile(username):
 
 @app.route('/gamepage/<gameid>')
 def gamepage(gameid):
+    streamName = twitch_api.getStreamName(gameid)
     users = wishlist.getUsersFor(gameid)
-    return render_template('gamepage.html',users=users)
+    return render_template('gamepage.html',streamer=streamName,users=users)
 
 @app.route('/twitch/')
 def twitch():
