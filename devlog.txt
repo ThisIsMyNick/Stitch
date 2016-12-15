@@ -124,3 +124,6 @@ danielC -- 2016-12-15 @1:51
 	Finished adding wishlist and profiles
 	Fixed bug with profiles not leading to correct path
 	Finished minor stlying
+
+yikaiW -- 2016-12-15 @7:20
+	Minor margin changes
