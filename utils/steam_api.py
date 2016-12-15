@@ -11,7 +11,9 @@ def parse_featured(s):
         discounted = game['discounted']
         discountpct = game['discount_percent']
         img = game['header_image']
-        games.append((name,price,discounted,discountpct,img))
+        gid = game['id']
+        steamurl = 'http://store.steampowered.com/app/%d' % gid
+        games.append((name,price,discounted,discountpct,img,gid,steamurl))
     return games
 
 def get_featured():
@@ -30,7 +32,7 @@ def get_gamedata(gID):
     data = d[str(gID)]['data']
     name = data['name']
 
-    if data['is_free'] == True:
+    if data['is_free'] or not data.get('price_overview'):
         price = 0
         discounted = False
         discountpct = 0
@@ -50,4 +52,5 @@ def get_gamedata(gID):
             if discountpct != 0:
                 discounted = True
     img = data['header_image']
-    return (name,price,discounted,discountpct,img,url)
+    steamurl = 'http://store.steampowered.com/app/%d' % gID
+    return (name,price,discounted,discountpct,img,gID,steamurl)

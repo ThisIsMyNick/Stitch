@@ -38,7 +38,7 @@ NEEDS SEARCH BAR FIXED + WORKING
         </ul>
       </div>
     </nav>
-    
+
     <div class="jumbotron text-center">
       <h1>Welcome {{username}}!</h1>
       <p>Here are your favorite games:</p>
@@ -49,6 +49,9 @@ NEEDS SEARCH BAR FIXED + WORKING
     </div>
 
 <div class="row-fluid">
+    {% if wishlist[0]|length == 0 and wishlist[1]|length == 0 %}
+    <h3>Empty :( ... Try adding some games!</h3>
+    {% else %}
     <div class="container-fluid col-md-6 game">
         {% for game in wishlist[0] %}
             <p> ON SALE </p>
@@ -72,6 +75,7 @@ NEEDS SEARCH BAR FIXED + WORKING
             </div>
         {% endfor %}
     </div>
+    {% endif %}
 </div>
 
 </body>

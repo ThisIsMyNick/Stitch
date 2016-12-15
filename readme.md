@@ -8,6 +8,12 @@ flask
 
 ##And thats it!
 
+Notes:
+We also used the *lxml* library to generate an app_id database from steamdb.info. 
+Since the steam api does not include a list of all steam games, we parsed info from steamdb.info to implement a search function.
+
+
+
 
 
 

@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 """
 game_data:
-[name, price, discounted (bool), discount %, image]
+[name, price, discounted (bool), discount %, image, app_id, steam url]
 """
 @app.route('/')
 def homepage():
@@ -103,16 +103,16 @@ def gamepage(gameid):
 @app.route('/twitch/')
 def twitch():
     if 'Username' in session:
-    
         keys = twitch_api.keys()
         return redirect('https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=http://127.0.0.1:5000/&scope=chat_login'%(keys[0]))
     else:
         return redirect(url_for('homepage',error="You must log in first"))
+
 @app.route("/logout/")
 def logout():
     if "Username" in session:# can only log out if you are already logged in
         session.pop("Username")
-    
+
     if "token" in session:# log out twitch token
         session.pop("token")
     return redirect (url_for('homepage',success="Logged out"))
