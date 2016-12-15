@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 """
 game_data:
-[name, price, discounted (bool), discount %, image]
+[name, price, discounted (bool), discount %, image, app_id, steam url]
 """
 @app.route('/')
 def homepage():
