@@ -27,13 +27,12 @@ body{
 }
 
 #gameRowImg{
-	position:relative;
-	left:-15px;
-	display:block;
-	height:auto;
-	width:30%;
-	max-height:100px;
-	overflow:hidden;
+    left:-15px;
+    float: left;
+    display:block;
+    height: 100%;
+    max-height: 100px;
+    overflow:hidden;
 }
 
 #gameRow .gameText{
