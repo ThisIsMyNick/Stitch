@@ -103,3 +103,7 @@ nobelG -- 2016-12-14 @12:10
 yikaiW -- 2016-12-14 @12:25
       Added DocumentChanges.pdf
 
+yikaiW -- 2016-12-14 @20:10
+	Made navbar consistent in webpages
+
+
