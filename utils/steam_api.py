@@ -52,5 +52,5 @@ def get_gamedata(gID):
             if discountpct != 0:
                 discounted = True
     img = data['header_image']
-    steamurl = 'http://store.steampowered.com/app/%d' % gID
+    steamurl = 'http://store.steampowered.com/app/%s' % gID
     return (name,price,discounted,discountpct,img,gID,steamurl)
