@@ -1,5 +1,5 @@
 import httplib, urllib2, base64, json
-from utils.steam_api import get_gameData
+from utils.steam_api import get_gamedata
 def keys():
 	k = open("keys.csv", "r").readline();
 	k = k.split(",")

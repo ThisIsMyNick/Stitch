@@ -98,7 +98,7 @@ def profile(username):
 @app.route('/gamepage/<gameid>')
 def gamepage(gameid):
     users = wishlist.getUsersFor(gameid)
-    return render_template('profile.html',username=username,users=users)
+    return render_template('gamepage.html',users=users)
 
 @app.route('/twitch/')
 def twitch():
