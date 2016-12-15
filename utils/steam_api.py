@@ -20,7 +20,8 @@ def get_featured():
     return featured
 
 def get_gamedata(gID):
-    u = urllib2.urlopen("http://store.steampowered.com/api/appdetails/?appids=%s" % gID)
+    url = "http://store.steampowered.com/api/appdetails/?appids=%s" % gID
+    u = urllib2.urlopen(url)
     d = json.loads(u.read())
 
     if d[str(gID)]['success'] == False:
@@ -49,4 +50,4 @@ def get_gamedata(gID):
             if discountpct != 0:
                 discounted = True
     img = data['header_image']
-    return (name,price,discounted,discountpct,img)
+    return (name,price,discounted,discountpct,img,url)
