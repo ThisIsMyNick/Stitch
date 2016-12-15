@@ -55,7 +55,7 @@ def gamelist():
 if __name__ == '__main__':
     db = sqlite3.connect("app_ids.db")
     c = db.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS apps (name TEXT, id INTEGER, UNIQUE(name,id))")
+    c.execute("CREATE TABLE IF NOT EXISTS apps (name TEXT, id INTEGER UNIQUE)")
     gl = gamelist()
     for g in gl:
         c.execute("INSERT OR IGNORE INTO apps VALUES(?,?)", (g[0], g[1]))
