@@ -114,7 +114,7 @@ STEAM REVIEWS
 
     <form class="form" role="form" action="/" method="post">
     <h3>{{game[0]}}
-    {% if username and not gameAdded(username, game[5]) %}
+    {% if username and not inWishlist(username, game[5]) %}
     <input type="submit" style="margin-left: 2%;" class="btn btn-primary btn-sm" name="action" value="Add to Wishlist">
     {% elif username %}
     <input type="submit" style="margin-left: 2%;" class="btn btn-primary btn-sm" name="action" value="Remove from Wishlist">
